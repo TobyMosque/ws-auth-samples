@@ -1,3 +1,7 @@
+[submodule "frontend"]
+path = frontend
+url = https://github.com/TobyMosque/ws-auth-samples-frontend.git
+
 [submodule "backend"]
 path = backend
 url = https://github.com/TobyMosque/ws-auth-samples-backend.git
