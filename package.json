@@ -1,6 +1,13 @@
 {
   "private": true,
   "workspaces": {
-    "packages": ["backend", "api"]
+    "packages": ["frontend", "backend", "api"]
+  },
+  "scripts": {
+    "frontend:dev": "yarn workspace frontend quasar dev",
+    "backend:dev": "yarn workspace backend start:dev",
+    "backend:openapi": "yarn workspace backend openapi",
+    "api:build": "yarn workspace api build",
+    "api:rebuild": "yarn backend:openapi && yarn api:build"
   }
 }
