@@ -1,12 +1,13 @@
 {
   "private": true,
   "workspaces": {
-    "packages": ["frontend", "backend", "api"]
+    "packages": ["frontend", "backend", "api", "prisma"]
   },
   "scripts": {
     "frontend:dev": "yarn workspace frontend quasar dev",
     "backend:dev": "yarn workspace backend start:dev",
     "backend:openapi": "yarn workspace backend openapi",
+    "backend:build": "yarn workspace backend build",
     "api:build": "yarn workspace api build",
     "api:rebuild": "yarn backend:openapi && yarn api:build"
   }

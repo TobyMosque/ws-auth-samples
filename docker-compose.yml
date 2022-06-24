@@ -1,0 +1,45 @@
+version: '3.4'
+
+services:
+  tm.samples.auth.api:
+    image: ${DOCKER_REGISTRY-}tm_samples_auth_api
+    volumes:
+      - api:/app
+      - .:/src
+    ports:
+      - 34501:3000
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    env_file:
+      - ./backend/envs/release.env
+    networks:
+      tm.samples.auth.network:
+      tm.samples.auth.internal:
+        ipv4_address: "172.18.23.2"
+
+  # tm.samples.auth.app:
+  #   image: ${DOCKER_REGISTRY-}tm_samples_auth_app
+  #   volumes:
+  #     - ./frontend:/src
+  #   build:
+  #     context: .
+  #     dockerfile: frontend/.Dockerfile
+  #   networks:
+  #     tm.samples.auth.network:
+  #     tm.samples.auth.internal:
+  #       ipv4_address: "172.18.23.3"
+
+volumes:
+  api:
+#   app:
+
+networks:
+  tm.samples.auth.internal:
+    internal: true
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.18.23.0/24
+  tm.samples.auth.network:
