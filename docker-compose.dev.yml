@@ -1,0 +1,26 @@
+version: '3.4'
+
+services:
+  app:
+    image: ${DOCKER_REGISTRY-}ws-auth-app-dev
+    build:
+      context: .
+      dockerfile: frontend/.Dockerfile
+      target: develop-stage
+    environment:
+      - API_URL=http://host.docker.internal:9203
+    ports:
+      - '9103:9103'
+    command: /bin/sh -c "yarn & yarn frontend:dev"
+
+  api:
+    image: ${DOCKER_REGISTRY-}ws-auth-api-dev
+    build:
+      context: .
+      dockerfile: backend/.Dockerfile
+      target: develop-stage
+    ports:
+      - '9203:3000'
+    env_file:
+      - ./backend/envs/dev.env
+    command: /bin/sh -c "yarn & yarn backend:dev"
