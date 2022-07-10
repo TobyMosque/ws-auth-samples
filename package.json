@@ -14,7 +14,7 @@
     "backend:openapi": "yarn workspace backend openapi",
     "api:build": "yarn workspace api build",
     "api:rebuild": "yarn backend:openapi && yarn api:build",
-    "backend:deploy": "npx ts-node build --path=backend --workspace=backend --service=api --image=ws-auth-api",
-    "frontend:deploy": "npx ts-node build -p=frontend -w=frontend -s=app -i=ws-auth-app"
+    "backend:deploy": "npx ts-node deploy --path=backend --workspace=backend --service=api --image=ws-auth-api",
+    "frontend:deploy": "npx ts-node deploy -p=frontend -w=frontend -s=app -i=ws-auth-app"
   }
 }
