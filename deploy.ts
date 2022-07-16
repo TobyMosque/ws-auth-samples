@@ -115,7 +115,7 @@ async function main({
   const version = packageJson.version;
 
   await exec({
-    command: `docker compose -f docker-compose.yml -f docker-compose.build.yml build ${service}`,
+    command: `docker compose -f docker-compose.yml -f docker-compose.build.yml build --no-cache ${service}`,
   });
   const id = await getImageId({ image });
   await dockerCmd({ cmd: 'tag', image, id, version, previous })
