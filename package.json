@@ -1,7 +1,11 @@
 {
   "private": true,
   "workspaces": {
-    "packages": ["frontend", "backend", "api"]
+    "packages": [
+      "frontend",
+      "backend",
+      "api"
+    ]
   },
   "scripts": {
     "docker:dev": "docker compose -f docker-compose.yml -f docker-compose.dev.yml up",
@@ -16,5 +20,8 @@
     "api:rebuild": "yarn backend:openapi && yarn api:build",
     "backend:deploy": "npx ts-node deploy --path=backend --workspace=backend --service=api --image=ws-auth-api",
     "frontend:deploy": "npx ts-node deploy -p=frontend -w=frontend -s=app -i=ws-auth-app"
+  },
+  "dependencies": {
+    "@openapitools/openapi-generator-cli": "^2.5.2"
   }
 }
